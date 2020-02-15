@@ -1,31 +1,25 @@
-class LinkedNode(object):
+class Node(object):
     def __init__(self,x):
-        self.value = x
+        self.val = x
         self.next = None
 
-class LinkedList(object):
-    size = 0
-    def __init__(self,x):
-        self.node = LinkedNode(x)
-        LinkedList.size += 1
+class List(object):
+    def __init__(self):
+        self.HeadVal = None
 
-    def addNode(self,x):
-        '''adding a new node to the linked list'''
-        if self.node.next == None:
-            self.node.next = LinkedNode(x)
-        else:
-            '''finding the next empty place to insert the node'''
-            while(True):
-                if self.node.next == None:
-                    self.node.next = LinkedNode(x)
-                    break
-                else:
-                    self.node = self.node.next
+    def printing(self):
+        '''Function that prints out the entire linked list'''
+        printVal = self.HeadVal
+        while printVal is not None:
+            '''we print the linked list in this loop'''
+            print(printVal.val)
+            printVal = printVal.next
 
-        LinkedList.size += 1
-
-x = LinkedList(1)
-x.addNode(1)
-x.addNode(2)
-x.addNode(3)
-x.addNode(4)
+linked = List()
+head = Node(1)
+linked.HeadVal = head
+e1 = Node(2)
+head.next = e1
+e2 = Node(3)
+e1.next = e2
+linked.printing()
