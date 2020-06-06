@@ -1,0 +1,106 @@
+***** Suppose the total number of calls are "n" and the total number of texts are "m"
+
+
+
+
+* Task0:
+ 	The complexity for my code in this task is O(1)
+
+
+
+
+
+
+* Task1:
+	The complexity of my code in this task is O(m) or O(n), whichever is greater.
+
+	Dominant loops in this code are:
+
+for line in texts:
+    if line[0] not in phone_number:
+        phone_number.append(line[0])
+    if line[1] not in phone_number:
+        phone_number.append(line[1])
+
+for call in calls:
+    if call[0] not in phone_number:
+        phone_number.append(call[0])
+    if call[1] not in phone_number:
+        phone_number.append(call[1])
+
+
+
+
+
+* Task2:
+	The complexity of my code in this task is O(n)
+	
+	The dominant loop in this task is:
+
+for call in calls:
+    if call[0] not in dict_duration.keys():
+        dict_duration[call[0]] = int(call[-1])
+    else:
+        dict_duration[call[0]] += int(call[-1])
+
+    if call[1] not in dict_duration.keys():
+        dict_duration[call[1]] = int(call[-1])
+    else:
+        dict_duration[call[1]] += int(call[-1])
+
+
+
+
+
+* Task3:
+	$$ Part A:
+
+	The complexity of my code in this part is also O(n).
+	
+	The dominant loop for this part is:
+
+for call in calls:
+    if call[0][0:5] == '(080)':
+        if call[1][0:2] == '(0':
+            temp = call[1].split(')')
+            code = temp[0] + ')'
+            num_list.append(code)
+        if call[1][0] == '7' or call[1][0] == '8' or call[1][0] == '9':
+            num_list.append(call[1][0:4])
+	
+
+	$$ Part B:
+	
+	The complexity of this part is O(n)
+
+	The dominant loop for this part is:
+
+for call in calls:
+    if call[0][0:5] == "(080)":
+        total_count += 1
+        if call[1][0:5] == "(080)":
+            bglre_count += 1
+
+
+
+
+
+* Task4:
+	In this task the overall complexity is O(2n + m), hence whichever of n or m is dominant our complexity turns out to be O(m) or O(n).
+	
+	The dominant loop for this task is:
+
+for call in calls:
+    if call[0] not in tele_list:
+        tele_list.append(call[0])
+
+for call in calls:
+    if call[1] in tele_list:
+        tele_list.remove(call[1])
+
+for text in texts:
+    if text[0] in tele_list:
+        tele_list.remove(text[0])
+    if text[1] in tele_list:
+        tele_list.remove(text[1])
+

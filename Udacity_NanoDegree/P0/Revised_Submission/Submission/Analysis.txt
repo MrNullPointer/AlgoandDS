@@ -1,0 +1,81 @@
+***** Suppose the total number of calls are "n" and the total number of texts are "m"
+
+
+
+
+* Task0:
+ 	The complexity for my code in this task is O(1)
+
+
+
+
+
+
+* Task1:
+	The complexity of my code in this task is O(m*m) or O(n*n), whichever is greater.
+
+	- Because "not in" is being used in the code below, we must iterate the entire list once to check if the item is present in the list. This adds to the overall complexity.
+
+	Dominant loops in this code are:
+
+for line in texts:
+    if line[0] not in phone_number:
+        phone_number.append(line[0])
+    if line[1] not in phone_number:
+        phone_number.append(line[1])
+
+for call in calls:
+    if call[0] not in phone_number:
+        phone_number.append(call[0])
+    if call[1] not in phone_number:
+        phone_number.append(call[1])
+
+
+
+
+
+* Task2:
+	The complexity of my code in this task is O(n)
+	
+	The dominant loop in this task is:
+
+for call in calls:
+    if call[0] not in dict_duration.keys():
+        dict_duration[call[0]] = int(call[-1])
+    else:
+        dict_duration[call[0]] += int(call[-1])
+
+    if call[1] not in dict_duration.keys():
+        dict_duration[call[1]] = int(call[-1])
+    else:
+        dict_duration[call[1]] += int(call[-1])
+
+
+
+
+
+* Task3:
+	$$ Part A:
+
+	The complexity of my code in this part is O(n log n) as the loop runs n times but the complexity of sort() function used in list is O(n log n) which is greater than O(n). 
+
+
+	$$ Part B:
+	
+	The complexity of this part is O(n)
+
+	The dominant loop for this part is:
+
+for call in calls:
+    if call[0][0:5] == "(080)":
+        total_count += 1
+        if call[1][0:5] == "(080)":
+            bglre_count += 1
+
+
+
+
+
+* Task4:
+	Since we are using sort() function in this task, in the worst case all the phone numbers will turn out to be telemarketing numbers. Hence, the overall complexity of this problem will be O(n log n) which is greater than O(n).
+
